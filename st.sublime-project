@@ -1,0 +1,11 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns": [".svn", ".git", ".sass-cache","bin"],
+			"file_include_patterns": ["*.h","*.hpp","*.cpp","*.c","*.cc","makefile"],
+			"follow_symlinks": true,
+			"path": "."
+		}
+	]	
+}
