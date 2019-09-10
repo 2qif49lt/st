@@ -122,15 +122,11 @@ std::string getbinpath()
 	GetModuleFileName(NULL,szbuff,sizeof(szbuff));
 	return szbuff;
 #else
-	char path[200] = {0};
-	char proc[200] = {0};
-	char *p = NULL;
-	pid_t pid = getpid();
-	sprintf(proc,"/proc/%d/exe",pid);
-	readlink(proc,path,200);
-	p = strchr(path,'(');
-	if(p != NULL)
-		p = '\0';
+	char path[200] = { 0 };
+	int rst = readlink("/proc/self/exe", path, sizeof(path));
+	if (rst > 0 && rst < sizeof(path))
+		path[rst] = 0;
+
 	return path;
 #endif
 }
